@@ -134,3 +134,9 @@ function inputInfo() {
     return [name, cost, note, images];
 }
 
+
+$(function() {
+    $.getJSON("test.json" , function(data) {
+	alert("po");        
+    });
+});
