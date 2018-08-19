@@ -7,12 +7,54 @@
     
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="map.css">
+    
     <!-- javascript -->
     <script src="./map.js"></script>
   </head>
   <body>
     <div id="map">
     </div>
+    <div id="lists">
+      <!-- menu1 -->
+      <div onclick="obj=document.getElementById('menu1').style; obj.display=(obj.display=='none')?'block':'none';">
+	<a style="cursor:pointer; font-size: 30px;">▼ ホテル</a>
+      </div>
+      <div id="menu1" style="display:none;clear:both;">
+	<div style="font-size: 30px;">
+	  po
+	</div>
+      </div>
+
+      <!-- menu2 -->      
+      <div onclick="obj=document.getElementById('menu2').style; obj.display=(obj.display=='none')?'block':'none';">
+	<a style="cursor:pointer; font-size: 30px;">▼ 駅、バス停</a>
+      </div>
+      <div id="menu2" style="display:none;clear:both;">
+	po
+      </div>
+
+      <!-- menu3 -->            
+      <div onclick="obj=document.getElementById('menu3').style; obj.display=(obj.display=='none')?'block':'none';">
+	<a style="cursor:pointer; font-size: 30px;">▼ 観光所</a>
+      </div>
+      <div id="menu3" style="display:none;clear:both;">
+	po
+	<br>
+	po
+      </div>
+      
+    </div>
+    <div id="buttons">
+      <a href="#" class="simple_btn">Add Spot</a>
+      <a href="#" class="simple_btn">Edit Spot</a>
+      <a href="#" class="simple_btn">Delete Spot</a>
+      <br>
+      <a href="#" class="simple_btn">Calc Way</a>
+      <a href="#" class="simple_btn">Home Position</a>
+      <a href="#" class="simple_btn">Calc Way</a>      
+    </div>
+    
+    
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXEcUmwaSbGX00bKweN_cAWG0srditp3Y&callback=initMap" async defer></script>
   </body>
