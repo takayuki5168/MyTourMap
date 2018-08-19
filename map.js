@@ -5,6 +5,30 @@ var center = {
 };
 var markers = [];
 var info_windows = [];
+var json_data = [
+    {
+	metadata : {
+	    id : "po",
+	    pass : "po"
+	},
+	content : {
+	    "po" : {
+		cost : "100円",
+		note : "test",
+		images : "",
+		lat : center.lat,
+		lng : center.lng
+	    },
+	    "popo" : {
+		cost : "1000円",
+		note : "test1",
+		images : "",
+		lat : center.lat + 0.2,
+		lng : center.lng + 0.2
+	    }
+	}
+    }
+];
 
 // mode
 var mode = 0;
@@ -22,6 +46,16 @@ function initMap() {
 	zoom: 8
     });
 
+    for (var name in json_data[0].content) {
+	addMarker(name,
+		  cost,
+		  note,
+		  images,
+		  {lat: json_data[0].content[name].lat,
+		   lng: json_data[0].content[name].lng}
+		 );
+    }
+
     map.addListener('click', function(e) { // add click event
 	if (mode == Mode.AddSpots) { // add spot
 	    addMarker(e.latLng);
@@ -29,6 +63,8 @@ function initMap() {
     });
 }
 
+function addMarker(name, cost, note, images, lat_lng) {
+}
 function addMarker(lat_lng) {
     var marker = new google.maps.Marker({
 	position: lat_lng,
