@@ -20,14 +20,6 @@ var json_data = [
 		lat : center.lat,
 		lng : center.lng
 	    },
-	    "hanoi" : {
-		type : "2",
-		cost : "1000円",
-		note : "test1",
-		images : "http://static.asiawebdirect.com/m/bangkok/portals/vietnam/homepage/hanoi/pagePropertiesOgImage/teaser_006.jpg.jpg",
-		lat : center.lat + 0.2,
-		lng : center.lng + 0.2
-	    },
 	    "hanoi station" : {
 		type : "1",
 		cost : "0円",
@@ -35,8 +27,31 @@ var json_data = [
 		images : "http://static.asiawebdirect.com/m/bangkok/portals/vietnam/homepage/hanoi/pagePropertiesOgImage/teaser_006.jpg.jpg",
 		lat : center.lat + 0.3,
 		lng : center.lng - 0.2
-	    }
-	    
+	    },
+	    "hanoi" : {
+		type : "2",
+		cost : "1000円",
+		note : "test1",
+		images : "http://static.asiawebdirect.com/m/bangkok/portals/vietnam/homepage/hanoi/pagePropertiesOgImage/teaser_006.jpg.jpg",
+		lat : center.lat + 0.2,
+		lng : center.lng - 0.2
+	    },
+	    "hanoi2" : {
+		type : "2",
+		cost : "1000円",
+		note : "test1",
+		images : "http://static.asiawebdirect.com/m/bangkok/portals/vietnam/homepage/hanoi/pagePropertiesOgImage/teaser_006.jpg.jpg",
+		lat : center.lat + 0.25,
+		lng : center.lng + 0.2
+	    },
+	    "hanoi3" : {
+		type : "2",
+		cost : "1000円",
+		note : "test1",
+		images : "http://static.asiawebdirect.com/m/bangkok/portals/vietnam/homepage/hanoi/pagePropertiesOgImage/teaser_006.jpg.jpg",
+		lat : center.lat - 0.2,
+		lng : center.lng + 0.2
+	    }	    
 	}
     }
 ];
