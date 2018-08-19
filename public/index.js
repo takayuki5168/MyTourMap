@@ -174,16 +174,12 @@ function inputInfo() {
 }
 
 
-$(function() {
-    $.getJSON("test.json" , function(data) {
-	alert("po");        
-    });
-});
-
+/*
 $(".demo").toggleButton({
     radio: false,
     selectable: 3
 })
+*/
 
 function getHotel() {
     var hotel = "";
@@ -214,3 +210,7 @@ function getSightseeing() {
     }
     return sightseeing;
 }
+
+exports.getJsonData = function() {
+    　return json_data;
+};
