@@ -14,40 +14,50 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="./index.js"></script>
   </head>
+
   <body>
     <div id="map">
     </div>
+    
     <div id="lists">
-      <!-- menu1 -->
+      <!-- menu1 -->      
       <div onclick="obj=document.getElementById('menu1').style; obj.display=(obj.display=='none')?'block':'none';">
-	<a style="cursor:pointer; font-size: 30px;">▼ ホテル</a>
+	<a style="cursor:pointer; font-size: 30px; color: blue;">▼ ホテル</a>
       </div>
       <div id="menu1" style="display:none;clear:both;">
-	<div style="font-size: 30px;">
-	  po
-	</div>
+	<p id="menu1_element" style="font-size: 30px;"></p>
+	<script type="text/javascript">
+	  var me = document.getElementById("menu1_element");
+	  me.innerHTML = getHotel();
+	</script>
       </div>
 
       <!-- menu2 -->      
       <div onclick="obj=document.getElementById('menu2').style; obj.display=(obj.display=='none')?'block':'none';">
-	<a style="cursor:pointer; font-size: 30px;">▼ 駅、バス停</a>
+	<a style="cursor:pointer; font-size: 30px; color: red;">▼ 駅、空港、バス停</a>
       </div>
       <div id="menu2" style="display:none;clear:both;">
-	po
+	<p id="menu2_element" style="font-size: 30px;"/>
+	<script type="text/javascript">
+	  var me = document.getElementById("menu2_element");
+	  me.innerHTML = getStation();
+	</script>
       </div>
 
-      <!-- menu3 -->            
+      <!-- menu3 -->
       <div onclick="obj=document.getElementById('menu3').style; obj.display=(obj.display=='none')?'block':'none';">
-	<a style="cursor:pointer; font-size: 30px;">▼ 観光所</a>
+	<a style="cursor:pointer; font-size: 30px; color: lightgreen;">▼ 観光所</a>
       </div>
       <div id="menu3" style="display:none;clear:both;">
-	po
-	<br>
-	po
+	<p id="menu3_element" style="font-size: 30px;"/>
+	<script type="text/javascript">
+	  var me = document.getElementById("menu3_element");
+	  me.innerHTML = getSightseeing();
+	</script>
       </div>
     </div>
 
-    <!-- buttons -->
+    <!-- buttons -->    
     <div class="simple_button">
       <input type="radio" name="s3" id="select1" onClick="changeMode(0)">
       <label for="select1">Cursor</label>
@@ -69,7 +79,6 @@
       <label for="select8">po</label>
     </div>      
 
-    
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXEcUmwaSbGX00bKweN_cAWG0srditp3Y&callback=initMap" async defer></script>
   </body>
 </html>

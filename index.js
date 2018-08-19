@@ -12,7 +12,7 @@ var json_data = [
 	    pass : "po"
 	},
 	content : {
-	    "po" : {
+	    "nova" : {
 		type : "0",
 		cost : "100円",
 		note : "test",
@@ -20,14 +20,23 @@ var json_data = [
 		lat : center.lat,
 		lng : center.lng
 	    },
-	    "popo" : {
+	    "hanoi" : {
 		type : "2",
 		cost : "1000円",
 		note : "test1",
 		images : "http://static.asiawebdirect.com/m/bangkok/portals/vietnam/homepage/hanoi/pagePropertiesOgImage/teaser_006.jpg.jpg",
 		lat : center.lat + 0.2,
 		lng : center.lng + 0.2
+	    },
+	    "hanoi station" : {
+		type : "1",
+		cost : "0円",
+		note : "test1",
+		images : "http://static.asiawebdirect.com/m/bangkok/portals/vietnam/homepage/hanoi/pagePropertiesOgImage/teaser_006.jpg.jpg",
+		lat : center.lat + 0.3,
+		lng : center.lng - 0.2
 	    }
+	    
 	}
     }
 ];
@@ -175,3 +184,33 @@ $(".demo").toggleButton({
     radio: false,
     selectable: 3
 })
+
+function getHotel() {
+    var hotel = "";
+    for (var name in json_data[0].content) {
+	if (json_data[0].content[name].type == "0") {
+            hotel += "・" + name + "<br>"
+	}
+    }
+    return hotel;
+}
+
+function getStation() {
+    var station = "";
+    for (var name in json_data[0].content) {
+	if (json_data[0].content[name].type == "1") {
+            station += "・" + name + "<br>"
+	}
+    }
+    return station;
+}
+
+function getSightseeing() {
+    var sightseeing = "";
+    for (var name in json_data[0].content) {
+	if (json_data[0].content[name].type == "2") {
+            sightseeing += "・" + name + "<br>"
+	}
+    }
+    return sightseeing;
+}
