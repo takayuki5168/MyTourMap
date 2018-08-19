@@ -13,6 +13,7 @@ var json_data = [
 	},
 	content : {
 	    "po" : {
+		type : "0",
 		cost : "100円",
 		note : "test",
 		images : "http://static.asiawebdirect.com/m/bangkok/portals/vietnam/homepage/hanoi/pagePropertiesOgImage/teaser_006.jpg.jpg",
@@ -20,6 +21,7 @@ var json_data = [
 		lng : center.lng
 	    },
 	    "popo" : {
+		type : "2",
 		cost : "1000円",
 		note : "test1",
 		images : "http://static.asiawebdirect.com/m/bangkok/portals/vietnam/homepage/hanoi/pagePropertiesOgImage/teaser_006.jpg.jpg",
@@ -48,6 +50,7 @@ function initMap() {
 
     for (var name in json_data[0].content) {
 	addMarker(name,
+		  json_data[0].content[name].type,
 		  json_data[0].content[name].cost,
 		  json_data[0].content[name].note,
 		  json_data[0].content[name].images,
@@ -63,19 +66,27 @@ function initMap() {
     });
 }
 
-function addMarker(name, cost, note, images, lat_lng) {
+function addMarker(name, type, cost, note, images, lat_lng) {
     var marker = new google.maps.Marker({
 	position: lat_lng,
-	map: map,
-	icon: {
-	    fillColor: "#00FF00",
-	    fillOpacity: 0.8,
-	    path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-	    scale: 4,
-	    strokeColor: "#000000",
-	    strokeWeight: 1.0
-	},
+	map: map
     });
+
+    var symbol = {
+	fillOpacity: 0.8,
+	path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+	scale: 4,
+	strokeColor: "#000000",
+	strokeWeight: 1.0
+    };
+    if (type == "0") {
+	symbol.fillColor = "blue";
+    } else if (type == "1") {
+	symbol.fillColor = "red";		
+    } else {
+	symbol.fillColor = "lightgreen";				
+    }
+    marker.setIcon(symbol);
     markers.push(marker);
 
     var info_window = new google.maps.InfoWindow({ // add info_window
@@ -84,7 +95,15 @@ function addMarker(name, cost, note, images, lat_lng) {
     });
     marker.addListener('click', function() { // when marker is clicked
 	if (mode == Mode.EditSpots) { // edit spot
-	    var [name, cost, note, images] = inputInfo();
+	    var [type, name, cost, note, images] = inputInfo();
+	    if (type == "0") {
+		symbol.fillColor = "blue";
+	    } else if (type == "1") {
+		symbol.fillColor = "red";		
+	    } else {
+		symbol.fillColor = "lightgreen";				
+	    }
+	    marker.setIcon(symbol);	    
 	    info_window.setContent(name + '<br>' + cost + '<br>' + note);
 	    
 	    return;
@@ -119,13 +138,14 @@ function addMarker(name, cost, note, images, lat_lng) {
 }
 
 function addMarkerEasily(lat_lng) {
-    var [name, cost, note, images] = inputInfo();
-    addMarker(name, cost, note, images, lat_lng);
+    var [name, type, cost, note, images] = inputInfo();
+    addMarker(name, type, cost, note, images, lat_lng);
 
     json_data[0].content[name] = {
+	type : type,
 	cost : cost,
 	note : note,
-	images : "",
+	images : images,
 	lat : lat_lng.lat(),
 	lng : lat_lng.lng()
     };
@@ -136,11 +156,12 @@ function changeMode(m) {
 }
 
 function inputInfo() {
+    type = window.prompt("0:ホテル\n1:駅、バス停\n2:観光所", "");
     name = window.prompt("名前", "");
     cost = window.prompt("費用", "0円");
     note = window.prompt("備考", "");        
     images = window.prompt("写真(複数選択可)", "");
-    return [name, cost, note, images];
+    return [type, name, cost, note, images];
 }
 
 
