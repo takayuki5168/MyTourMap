@@ -15,14 +15,14 @@ var json_data = [
 	    "po" : {
 		cost : "100円",
 		note : "test",
-		images : "",
+		images : "http://static.asiawebdirect.com/m/bangkok/portals/vietnam/homepage/hanoi/pagePropertiesOgImage/teaser_006.jpg.jpg",
 		lat : center.lat,
 		lng : center.lng
 	    },
 	    "popo" : {
 		cost : "1000円",
 		note : "test1",
-		images : "",
+		images : "http://static.asiawebdirect.com/m/bangkok/portals/vietnam/homepage/hanoi/pagePropertiesOgImage/teaser_006.jpg.jpg",
 		lat : center.lat + 0.2,
 		lng : center.lng + 0.2
 	    }
@@ -66,12 +66,21 @@ function initMap() {
 function addMarker(name, cost, note, images, lat_lng) {
     var marker = new google.maps.Marker({
 	position: lat_lng,
-	map: map
+	map: map,
+	icon: {
+	    fillColor: "#00FF00",
+	    fillOpacity: 0.8,
+	    path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+	    scale: 4,
+	    strokeColor: "#000000",
+	    strokeWeight: 1.0
+	},
     });
     markers.push(marker);
 
     var info_window = new google.maps.InfoWindow({ // add info_window
-	content: name + '<br>' + cost + '<br>' + note
+	content: "<h3>" + name + "</h3><img src=" + images + " style='width: 100%'/><br>費用:" + cost + "<br>備考:" + note,
+	maxWidth: 250
     });
     marker.addListener('click', function() { // when marker is clicked
 	if (mode == Mode.EditSpots) { // edit spot
@@ -140,3 +149,8 @@ $(function() {
 	alert("po");        
     });
 });
+
+$(".demo").toggleButton({
+    radio: false,
+    selectable: 3
+})

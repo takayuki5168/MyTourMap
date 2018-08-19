@@ -6,11 +6,13 @@
     <meta charset="utf-8">
     
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="map.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" href="./external/bootstrap/css/bootstrap.min.css">
     
     <!-- javascript -->
+    <script src="./external/bootstrap/js/bootstrap.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="./map.js"></script>
+    <script src="./index.js"></script>
   </head>
   <body>
     <div id="map">
@@ -43,18 +45,31 @@
 	<br>
 	po
       </div>
-      
-    </div>
-    <div id="buttons">
-      <a href="#" class="simple_btn" onClick="changeMode(1)">Add Spots</a>
-      <a href="#" class="simple_btn" onClick="changeMode(2)">Edit Spots</a>
-      <a href="#" class="simple_btn" onClick="changeMode(3)">Delete Spots</a>
-      <br>
-      <a href="#" class="simple_btn" onClick="changeMode(4)">Calc Way</a>
-      <a href="#" class="simple_btn" onClick="changeMode(5)">Home Position</a>
-      <a href="#" class="simple_btn" onClick="changeMode(6)">Calc Way</a>      
     </div>
 
+    <!-- buttons -->
+    <div class="simple_button">
+      <input type="radio" name="s3" id="select1" onClick="changeMode(0)">
+      <label for="select1">Cursor</label>
+      <input type="radio" name="s3" id="select2" onClick="changeMode(1)">
+      <label for="select2">Add Spots</label>
+      <input type="radio" name="s3" id="select3" onClick="changeMode(2)">
+      <label for="select3">Edit Spots</label>
+      <input type="radio" name="s3" id="select4" onClick="changeMode(3)">
+      <label for="select4">Delete Spots</label>
+    </div>
+    <div class="simple_button">
+      <input type="radio" name="s3" id="select5" onClick="changeMode(4)">      
+      <label for="select5">Home</label>
+      <input type="radio" name="s3" id="select6" onClick="changeMode(4)">      
+      <label for="select6">Search</label>
+      <input type="radio" name="s3" id="select7" onClick="changeMode(4)">      
+      <label for="select7">po</label>
+      <input type="radio" name="s3" id="select8" onClick="changeMode(4)">      
+      <label for="select8">po</label>
+    </div>      
+
+    
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXEcUmwaSbGX00bKweN_cAWG0srditp3Y&callback=initMap" async defer></script>
   </body>
 </html>
