@@ -48,9 +48,9 @@ function initMap() {
 
     for (var name in json_data[0].content) {
 	addMarker(name,
-		  cost,
-		  note,
-		  images,
+		  json_data[0].content[name].cost,
+		  json_data[0].content[name].note,
+		  json_data[0].content[name].images,
 		  {lat: json_data[0].content[name].lat,
 		   lng: json_data[0].content[name].lng}
 		 );
@@ -58,21 +58,17 @@ function initMap() {
 
     map.addListener('click', function(e) { // add click event
 	if (mode == Mode.AddSpots) { // add spot
-	    addMarker(e.latLng);
+	    addMarkerEasily(e.latLng);
 	}
     });
 }
 
 function addMarker(name, cost, note, images, lat_lng) {
-}
-function addMarker(lat_lng) {
     var marker = new google.maps.Marker({
 	position: lat_lng,
 	map: map
     });
     markers.push(marker);
-
-    var [name, cost, note, images] = inputInfo();
 
     var info_window = new google.maps.InfoWindow({ // add info_window
 	content: name + '<br>' + cost + '<br>' + note
@@ -113,6 +109,19 @@ function addMarker(lat_lng) {
     info_windows.push(info_window);
 }
 
+function addMarkerEasily(lat_lng) {
+    var [name, cost, note, images] = inputInfo();
+    addMarker(name, cost, note, images, lat_lng);
+
+    json_data[0].content[name] = {
+	cost : cost,
+	note : note,
+	images : "",
+	lat : lat_lng.lat(),
+	lng : lat_lng.lng()
+    };
+}
+
 function changeMode(m) {
     mode = m;
 }
@@ -124,3 +133,4 @@ function inputInfo() {
     images = window.prompt("写真(複数選択可)", "");
     return [name, cost, note, images];
 }
+
